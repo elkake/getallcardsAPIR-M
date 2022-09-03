@@ -108,9 +108,9 @@ body {
   border-radius: 12px;
   display: flex;
   padding: 4px 8px;
-  width: 450px;
+  max-width: 450px;
   box-shadow: 0 0 10px #bada43;
-  margin-bottom: 24px;
+  margin: 24px 4px;
 }
 
 .img-container {
@@ -118,7 +118,7 @@ body {
 }
 img {
   border-radius: 12px;
-  width: 200px;
+  max-width: 200px;
   border: 2px solid #23484c;
   margin-top: 4px;
 }
@@ -139,4 +139,12 @@ img {
 
 .dates-container p {
   padding: 12px 0;
+}
+
+.noload {
+  display: inline-block;
+  color: #f00;
+  font-size: 50px;
+  text-align: center;
+  width: 400px;
 }
