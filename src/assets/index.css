@@ -1,0 +1,142 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: sans-serif;
+  background: #111;
+}
+@font-face {
+  font-family: "rym";
+  src: url("estilos/rym.ttf") format("truetype");
+  font-style: normal;
+  font-weight: normal;
+}
+
+#datos {
+  position: relative;
+  text-align: center;
+  background-size: 100%;
+  height: 400px;
+}
+
+#datos p {
+  padding: 24px 0 12px;
+  font-weight: bold;
+  color: #badb43;
+  font-size: 2rem;
+}
+
+#datos h3 {
+  color: #44b4cc;
+  font-family: rym;
+  -webkit-text-stroke: 0.4px rgb(35, 72, 76);
+  text-shadow: 0 0 10px #bada43;
+  font-weight: bold;
+  font-size: 4rem;
+  padding: 20px 0;
+  background-color: #00000022;
+}
+
+#datos span {
+  color: #fffb;
+  font-weight: 600;
+  font-size: 1rem;
+  display: inline-block;
+  margin: 20px;
+}
+
+#datos::before {
+  content: " ";
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-image: url(https://images6.alphacoders.com/909/thumb-1920-909641.png);
+  background-size: cover;
+  background-position: 0% 40%;
+  filter: grayscale(100%) brightness(40%);
+  z-index: -3;
+}
+
+.app {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  grid-template-rows: repeat(auto-fill, minmax(50px, 1fr));
+}
+
+.button-container {
+  width: 60px;
+  height: 60px;
+  margin: 20px auto;
+
+  display: grid;
+  align-content: center;
+  justify-content: center;
+}
+
+.button-container .button {
+  border: none;
+  position: relative;
+  width: 50px;
+  height: 50px;
+  text-decoration: none;
+  outline: none;
+  box-shadow: none;
+  background-color: transparent;
+  background-image: url(https://i.pinimg.com/originals/98/29/21/9829215db6f9210c0ae4e318e854cb1f.png);
+  background-size: cover;
+
+  background-position: 50% 50%;
+}
+.button:active {
+  rotate: 360deg;
+  transition: 10s;
+}
+
+/* ------CARD CONTAINER--------- */
+.card-container {
+  -webkit-box-shadow: inset 0px 0px 5px #000;
+  color: #bada43;
+  height: 220px;
+  background-color: #23484c;
+  border: 3px solid #44b4cc;
+  border-radius: 12px;
+  display: flex;
+  padding: 4px 8px;
+  width: 450px;
+  box-shadow: 0 0 10px #bada43;
+  margin-bottom: 24px;
+}
+
+.img-container {
+  margin-right: 16px;
+}
+img {
+  border-radius: 12px;
+  width: 200px;
+  border: 2px solid #23484c;
+  margin-top: 4px;
+}
+
+.img-container::before {
+  margin-top: 4px;
+  border-radius: 12px;
+  content: "";
+  position: absolute;
+  height: 200px;
+  width: 200px;
+  background-image: radial-gradient(circle, transparent, transparent, #000a);
+}
+
+.dates-container {
+  padding-top: 8px;
+}
+
+.dates-container p {
+  padding: 12px 0;
+}
