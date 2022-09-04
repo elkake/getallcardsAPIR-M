@@ -4,63 +4,53 @@ const app = document.getElementById("app");
 
 const button = document.querySelector(".button");
 
+// const observer = new IntersectionObserver(carga);
+
 const error = document.createElement("div");
 error.className = "noload";
 error.textContent = "NO SE PUDO CARGAR MAS";
 
-const dataApi = async (api) => {
-  try {
-    const response = await fetch(api);
-    if (response.status == 200) {
-      const data = await response.json();
-      return data;
-    }
-  } catch (e) {
-    app.innerHTML += error;
-  }
-};
-
-const getdata = async (api) => {
-  let id = Math.floor(Math.random() * 800 + 1);
-  const character = await dataApi(`${api}/character/${id}`);
+const armado = async (img, id, name, status, species) => {
+  let card = document.createElement("div");
+  card.className = "card-container";
   let node = `
-    <div class="card-container">
     <div class="img-container">
       <img
-        src=${character.image}
+        src=${img}
         alt=""
       />
     </div>
     <div class="dates-container">
-      <p>ID: ${character.id}</p>
-      <p>NOMBRE: ${character.name}</p>
-      <p>ESTADO: ${character.status}</p>
-      <p>ESPECIE: ${character.species}</p>
+      <p>ID: ${id}</p>
+      <p>NOMBRE: ${name}</p>
+      <p>ESTADO: ${status}</p>
+      <p>ESPECIE: ${species}</p>
     </div>
-  </div>
+  
     `;
-
-  app.innerHTML += node;
-  registerImage(node);
+  card.innerHTML = node;
+  return card;
 };
 
-button.onclick = () => {
-  getdata(api);
+const dataApi = async () => {
+  const response = await fetch(
+    `${api}/character/${Math.floor(Math.random() * 800 + 1)}`
+  );
+
+  const data = await response.json();
+  const newPublication = await armado(
+    data.image,
+    data.id,
+    data.name,
+    data.status,
+    data.species
+  );
+  // observer.observe(armado);
+
+  return newPublication;
 };
 
-const isIntersecting = (entry) => {
-  return entry.isIntersecting;
-};
-
-const accion = () => {
-  console.log("hola");
-};
-
-const observer = new IntersectionObserver((entries) => {
-  entries.filter(isIntersecting).forEach(accion);
-});
-
-const registerImage = (imagen) => {
-  //intersectionobserver
-  observer.observe(imagen);
+button.onclick = async () => {
+  const datos = await dataApi();
+  app.prepend(datos);
 };
